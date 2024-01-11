@@ -7,11 +7,11 @@ const courseRoute = require('./routes/courseRoute');
 const app = express();
 
 // Connect to DB
-mongosses.connect('mongodb://localhost:27017/smartedu-db', {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    useFindAndModify: false
-}).then(() => console.log('DB Connected Successfully'))
+mongosses.connect('mongodb://localhost:27017/smartedu-db').then(() => console.log('DB Connected Successfully'))
+
+//Middlewares
+app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 
 // Template Engine
 app.set('view engine', 'ejs');
@@ -19,7 +19,7 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 // Routes
-app.use('/', pageRoute);
+app.use('/', pageRoute); 
 app.use('/courses', courseRoute);
 
 
