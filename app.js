@@ -1,5 +1,5 @@
 const express = require('express');
-const mongosses = require('mongoose');
+const mongoose = require('mongoose');
 
 const pageRoute = require('./routes/pageRoute');
 const courseRoute = require('./routes/courseRoute');
@@ -7,7 +7,7 @@ const courseRoute = require('./routes/courseRoute');
 const app = express();
 
 // Connect to DB
-mongosses.connect('mongodb://localhost:27017/smartedu-db').then(() => console.log('DB Connected Successfully'))
+mongoose.connect('mongodb://localhost:27017/smartedu-db').then(() => console.log('DB Connected Successfully'))
 
 //Middlewares
 app.use(express.json());
